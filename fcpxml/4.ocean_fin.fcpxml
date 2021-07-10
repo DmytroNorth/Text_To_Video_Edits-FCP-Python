@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+
+<fcpxml version="1.9">
+    <resources>
+        <format id="r1" name="FFVideoFormat1080p30" frameDuration="100/3000s" width="1920" height="1080" colorSpace="1-1-1 (Rec. 709)"/>
+        <media id="r2" name="ocean_clip" uid="5x6vDMM/RmKPe9C5WLkDWw" modDate="2021-07-02 12:50:05 -0700">
+            <sequence duration="23800/3000s" format="r3" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
+                <spine>
+                    <asset-clip name="ocean" offset="0s" ref="r4" duration="3100/3000s" start="4600/3000s" audioRole="dialogue" tcFormat="NDF"/>
+                    <asset-clip name="ocean" offset="3100/3000s" ref="r4" duration="3500/3000s" audioRole="dialogue" tcFormat="NDF"/>
+                    <asset-clip name="tugboat" offset="6600/3000s" ref="r5" duration="5600/3000s" start="4700/3000s" audioRole="dialogue" format="r6" tcFormat="NDF">
+                        <conform-rate scaleEnabled="0"/>
+                    </asset-clip>
+                    <asset-clip name="tugboat" offset="12200/3000s" ref="r5" duration="8600/3000s" start="12200/3000s" audioRole="dialogue" format="r6" tcFormat="NDF">
+                        <conform-rate scaleEnabled="0"/>
+                    </asset-clip>
+                    <asset-clip name="tugboat" offset="20800/3000s" ref="r5" duration="1s" audioRole="dialogue" format="r6" tcFormat="NDF">
+                        <conform-rate scaleEnabled="0"/>
+                    </asset-clip>
+                </spine>
+            </sequence>
+        </media>
+        <format id="r3" name="FFVideoFormat3840x2160p30" frameDuration="100/3000s" width="3840" height="2160" colorSpace="1-1-1 (Rec. 709)"/>
+        <asset id="r4" name="ocean" uid="F13BD2413D8AEE843AD4C03F3C15EF7D" start="0s" duration="1540/600s" hasVideo="1" format="r3" hasAudio="1" audioSources="1" audioChannels="1" audioRate="44100">
+            <media-rep kind="original-media" sig="F13BD2413D8AEE843AD4C03F3C15EF7D" src="file:///Users/dmytrokryvonog/Documents/DAT/gda/auto-edit-proj/assets/ocean.mov">
+                <bookmark>Ym9va2QDAAAAAAQQMAAAACFuvp3Z1JgYlx7S7cbmzbGsHSzayP05rxlQpoiU0YQEYAIAAAQAAAADAwAAABgAKAUAAAABAQAAVXNlcnMAAAAOAAAAAQEAAGRteXRyb2tyeXZvbm9nAAAJAAAAAQEAAERvY3VtZW50cwAAAAMAAAABAQAAREFUAAMAAAABAQAAZ2RhAA4AAAABAQAAYXV0by1lZGl0LXByb2oAAAYAAAABAQAAYXNzZXRzAAAJAAAAAQEAAG9jZWFuLm1vdgAAACAAAAABBgAAEAAAACAAAAA4AAAATAAAAFgAAABkAAAAfAAAAIwAAAAIAAAABAMAACZgAAAAAAAACAAAAAQDAAAkmgAAAAAAAAgAAAAEAwAA5G8BAAAAAAAIAAAABAMAAIApgAAAAAAACAAAAAQDAACqdbkAAAAAAAgAAAAEAwAAqblGAQAAAAAIAAAABAMAAEu6RgEAAAAACAAAAAQDAAA8t0YBAAAAACAAAAABBgAAyAAAANgAAADoAAAA+AAAAAgBAAAYAQAAKAEAADgBAAAIAAAAAAQAAEHDR8xJWnVaGAAAAAECAAABAAAAAAAAAA8AAAAAAAAAAAAAAAAAAAAIAAAABAMAAAYAAAAAAAAABAAAAAMDAAD1AQAACAAAAAEJAABmaWxlOi8vLwwAAAABAQAATWFjaW50b3NoIEhECAAAAAQDAAAAAIcROQAAAAgAAAAABAAAQcHeRIAAAAAkAAAAAQEAADMyRjg4MTZELUNGRjQtNDJFMy04OUFFLTVEQTg1NzNGNEQ2MBgAAAABAgAAgQAAAAEAAADvEwAAAQAAAAAAAAAAAAAAAQAAAAEBAAAvAAAAAAAAAAEFAADMAAAA/v///wEAAAAAAAAAEAAAAAQQAACgAAAAAAAAAAUQAABIAQAAAAAAABAQAACAAQAAAAAAAEAQAABwAQAAAAAAAAIgAABMAgAAAAAAAAUgAAC8AQAAAAAAABAgAADMAQAAAAAAABEgAAAAAgAAAAAAABIgAADgAQAAAAAAABMgAADwAQAAAAAAACAgAAAsAgAAAAAAADAgAABYAgAAAAAAAAHAAACgAQAAAAAAABHAAAAgAAAAAAAAABLAAACwAQAAAAAAABDQAAAEAAAAAAAAAA==</bookmark>
+            </media-rep>
+            <metadata>
+                <md key="com.apple.proapps.studio.rawToLogConversion" value="0"/>
+                <md key="com.apple.proapps.spotlight.kMDItemProfileName" value="HD (1-1-1)"/>
+                <md key="com.apple.proapps.studio.cameraISO" value="0"/>
+                <md key="com.apple.proapps.studio.cameraColorTemperature" value="0"/>
+                <md key="com.apple.proapps.spotlight.kMDItemCodecs">
+                    <array>
+                        <string>AAC</string>
+                        <string>H.264</string>
+                    </array>
+                </md>
+                <md key="com.apple.proapps.mio.ingestDate" value="2021-07-02 11:57:22 -0700"/>
+            </metadata>
+        </asset>
+        <asset id="r5" name="tugboat" uid="AD55817908C5E109B63DD2F45D28C4D7" start="0s" duration="628069/90000s" hasVideo="1" format="r6" hasAudio="1" audioSources="1" audioChannels="2" audioRate="48000">
+            <media-rep kind="original-media" sig="AD55817908C5E109B63DD2F45D28C4D7" src="file:///Users/dmytrokryvonog/Documents/DAT/gda/auto-edit-proj/assets/tugboat.mp4">
+                <bookmark>Ym9va2QDAAAAAAQQMAAAAKQku06FpqhMeyxX+SLA/vRtD36ETVWmG++7CPu1DANcYAIAAAQAAAADAwAAABgAKAUAAAABAQAAVXNlcnMAAAAOAAAAAQEAAGRteXRyb2tyeXZvbm9nAAAJAAAAAQEAAERvY3VtZW50cwAAAAMAAAABAQAAREFUAAMAAAABAQAAZ2RhAA4AAAABAQAAYXV0by1lZGl0LXByb2oAAAYAAAABAQAAYXNzZXRzAAALAAAAAQEAAHR1Z2JvYXQubXA0ACAAAAABBgAAEAAAACAAAAA4AAAATAAAAFgAAABkAAAAfAAAAIwAAAAIAAAABAMAACZgAAAAAAAACAAAAAQDAAAkmgAAAAAAAAgAAAAEAwAA5G8BAAAAAAAIAAAABAMAAIApgAAAAAAACAAAAAQDAACqdbkAAAAAAAgAAAAEAwAAqblGAQAAAAAIAAAABAMAAEu6RgEAAAAACAAAAAQDAABryUYBAAAAACAAAAABBgAAyAAAANgAAADoAAAA+AAAAAgBAAAYAQAAKAEAADgBAAAIAAAAAAQAAEHDKnWF9K9GGAAAAAECAAABAAAAAAAAAA8AAAAAAAAAAAAAAAAAAAAIAAAABAMAAAYAAAAAAAAABAAAAAMDAAD1AQAACAAAAAEJAABmaWxlOi8vLwwAAAABAQAATWFjaW50b3NoIEhECAAAAAQDAAAAAIcROQAAAAgAAAAABAAAQcHeRIAAAAAkAAAAAQEAADMyRjg4MTZELUNGRjQtNDJFMy04OUFFLTVEQTg1NzNGNEQ2MBgAAAABAgAAgQAAAAEAAADvEwAAAQAAAAAAAAAAAAAAAQAAAAEBAAAvAAAAAAAAAAEFAADMAAAA/v///wEAAAAAAAAAEAAAAAQQAACgAAAAAAAAAAUQAABIAQAAAAAAABAQAACAAQAAAAAAAEAQAABwAQAAAAAAAAIgAABMAgAAAAAAAAUgAAC8AQAAAAAAABAgAADMAQAAAAAAABEgAAAAAgAAAAAAABIgAADgAQAAAAAAABMgAADwAQAAAAAAACAgAAAsAgAAAAAAADAgAABYAgAAAAAAAAHAAACgAQAAAAAAABHAAAAgAAAAAAAAABLAAACwAQAAAAAAABDQAAAEAAAAAAAAAA==</bookmark>
+            </media-rep>
+            <metadata>
+                <md key="com.apple.proapps.studio.rawToLogConversion" value="0"/>
+                <md key="com.apple.proapps.spotlight.kMDItemProfileName" value="HD (1-1-1)"/>
+                <md key="com.apple.proapps.studio.cameraISO" value="0"/>
+                <md key="com.apple.proapps.studio.cameraColorTemperature" value="0"/>
+                <md key="com.apple.proapps.spotlight.kMDItemCodecs">
+                    <array>
+                        <string>'avc1'</string>
+                        <string>AAC</string>
+                    </array>
+                </md>
+                <md key="com.apple.proapps.mio.ingestDate" value="2021-07-02 12:04:49 -0700"/>
+            </metadata>
+        </asset>
+        <format id="r6" frameDuration="3011/90000s" width="1920" height="1080" colorSpace="1-1-1 (Rec. 709)"/>
+    </resources>
+    <library location="file:///Users/dmytrokryvonog/Documents/fcp_lbr/auto-edit.fcpbundle/">
+        <event name="main" uid="6776E479-2A08-441C-9F8F-9935C2F1BF83">
+            <project name="4.ocean_edit" uid="F738A2E2-FF01-4BA1-BEB0-9180B92FCAFA" modDate="2021-07-02 12:50:34 -0700">
+                <sequence duration="500000/3000s" format="r1" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
+                    <spine>
+                      <ref-clip name="ocean_clip" offset="0s" ref="r2" duration="37s" start="25s"/>
+                      <ref-clip name="ocean_clip" offset="37s" ref="r2" duration="29s" start="158s"/>
+                      <ref-clip name="ocean_clip" offset="66s" ref="r2" duration="14s" start="257s"/>
+                      <ref-clip name="ocean_clip" offset="80s" ref="r2" duration="8s" start="3880s"/>
+                    </spine>
+                </sequence>
+            </project>
+        </event>
+    </library>
+</fcpxml>
