@@ -1,6 +1,5 @@
-import re
-from datetime import datetime, timedelta
 import pandas as pd
+# dataframe operations
 
 # duration = end - start
 # offset = running total of duration
@@ -47,7 +46,7 @@ df.offset[0] = 0
 df.offset = df.offset.astype(int)
 # print(df)
 # selecting columns
-print(df[['start', 'duration', 'offset']])
+print(df[['offset', 'duration', 'start']])
 
 
 # ini lists

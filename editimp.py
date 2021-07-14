@@ -1,78 +1,71 @@
 #!/usr/bin/env python
 
 import re
-from datetime import datetime, timedelta
+import pandas as pd
 
 # intializing .txt file with a list of markers
-edt = open('assets/edl.txt')
-edt = edt.read()
+edt = open('assets/edl.txt').read()
 
 # intializing .fcpxml file with at least 1 marker
-fcp = open('assets/clip.fcpxml')
-fcp = fcp.read()
+fcp = open('assets/clip.fcpxml').read()
 
+#STRING REGEX OPERATIONS
 # puting '00:' hours in where hours are missing
-pat3 = r'(\s|^)(\d{1,2}:\d{1,2})(\s)'
-repl3 = '\g<1>00:\\2\\3'
-edt3 = re.sub(pat3, repl3, edt, flags=re.MULTILINE)
-# print(edt3)
+pat1 = r'(\s|^)(\d{1,2}:\d{1,2})(\s)'
+repl1 = '\g<1>00:\\2\\3'
+edt1 = re.sub(pat1, repl1, edt, flags=re.MULTILINE)
+# print(edt1)
 
-pat4 = r'.*?(\d{1,2}:\d{1,2}:\d{1,2}).*?(\d{1,2}:\d{1,2}:\d{1,2})'
-edt4 = re.findall(pat4, edt3)
-# print(edt4)
+# pulling instanses with two timecodes in one line only
+pat2 = r'.*?(\d{1,2}:\d{1,2}:\d{1,2}).*?(\d{1,2}:\d{1,2}:\d{1,2})'
+edt2 = re.findall(pat2, edt1)
+# print(edt2)
 
+#DATAFRAME CONVERSION
+# converting to dataframe
+df = pd.DataFrame(edt2, columns = ['start', 'end'])
+# print(df)
 
-# # converting %H:%M:%S to total seconds
-# pat4 = r'(\d{1,2}:\d{1,2}:\d{1,2})'
-# def repl4_converted_to_seconds(timestamp):
-#     timestamp = timestamp.group()
-#     dt = datetime.strptime(timestamp, '%H:%M:%S')
-#     delta = timedelta(hours=dt.hour, minutes=dt.minute, seconds=dt.second)
-#     return str(delta.seconds)
-# edt4 = re.sub(pat4, repl4_converted_to_seconds, edt3)
-# print(edt4)
+# building custom function to convert string to total seconds
+def str_to_sec(colname):
+    colname = pd.to_timedelta(colname)
+    return colname.dt.total_seconds().astype(int)
 
-# # converting %H:%M:%S to total seconds
-# pat4 = r'(\d{1,2}:\d{1,2}:\d{1,2})'
-# def repl4_converted_to_seconds(timestamp):
-#     timestamp = timestamp.group()
-#     dt = datetime.strptime(timestamp, '%H:%M:%S')
-#     delta = timedelta(hours=dt.hour, minutes=dt.minute, seconds=dt.second)
-#     return '$' + str(delta.seconds) + '@'
-# edt4 = re.sub(pat4, repl4_converted_to_seconds, edt3)
-# print(edt4)
+# applying custom function to all columns
+df[['start', 'end']] = df[['start', 'end']].apply(str_to_sec)
+# print(df)
 
-# pulling first instance of <ref-clip> line from fcpxml
-pat5 = r'.*?<ref-clip.*?>'
-fcp1 = re.search(pat5, fcp)
-fcp1 = fcp1.group()
-print(fcp1)
+#DATAFRAME OPERATIONS
+# substraction with df
+df['duration'] = df['end'] - df['start']
+#calculating offset column and shifting one row below
+df['offset']=df['duration'].cumsum().shift(+1)
+# filling NA values with 0 and assigning type integer
+df = df.fillna(0).astype(int)
+# print(df)
 
-# assigning varibles to <marker> parts of syntax
-pat6 = r'(.*?offset=").*?(".*duration=").*?(".*start=").*?(".*)'
-repl5 = '\\1'
-repl6 = '\\2'
-repl7 = '\\3'
-repl7a = '\\4'
-fcp2 = re.sub(pat6, repl5, fcp1)
-fcp3 = re.sub(pat6, repl6, fcp1)
-fcp4 = re.sub(pat6, repl7, fcp1)
-fcp4a = re.sub(pat6, repl7a, fcp1)
-# print(fcp2)
-# print(fcp3)
-# print(fcp4)
-# print(fcp4a)
+#STRING ASSEMBLY
+# pulling chunks of strings form fcpxml to assemble <ref-clip> tag
+pat6 = r'(.*?<ref-clip.*?offset=").*?(".*duration=").*?(".*start=").*?(".*)'
+fcp2 = re.findall(pat6, fcp)
 
-# # assemblying new marker lines
-# pat7 = r'(^\d*) (.*)'
-# repl8 = fcp2 + '\\1' + fcp3 + '\\2' + fcp4 + '\\3' + fcp4a
-# fcp5 = re.sub(pat7, repl8, edt4, flags=re.MULTILINE)
+# combining created lists
+lcomb = []
+for i in range(len(df)):
+    lcomb.append(fcp2[0][0] + str(df.offset[i]) + fcp2[0][1] + str(df.duration[i])+fcp2[0][2] + str(df.start[i])+ fcp2[0][3])
+# print(lcomb)
 
-# # assemblying fcpxml code
-# pat8 = r'(^\s*<marker.*$)'
-# repl8 = fcp5 + '\n\\1'
-# fcp6 = re.sub(pat8, repl8, fcp, 1, flags=re.MULTILINE)
+# converting list into a string
+sub = '\n'.join(lcomb)
+# print(sub)
 
-# # writing to a new .fcpxml file
-# with open('export.fcpxml', 'w') as newfile:
-#     newfile.write(fcp6)
+#XML ASSEMBLY
+# replacing ref-clip markers with newly assembled
+pat8 = r'( +<ref-clip.*?\n)+'
+repl8 = sub + '\n'
+fcp6 = re.sub(pat8, repl8, fcp)
+# print(fcp6)
+
+# writing to a new .fcpxml file
+with open('export.fcpxml', 'w') as newfile:
+    newfile.write(fcp6)

@@ -3302,8 +3302,10 @@
             <project name="4.ocean_edit" uid="F738A2E2-FF01-4BA1-BEB0-9180B92FCAFA" modDate="2021-07-14 15:10:37 -0700">
                 <sequence duration="16200/3000s" format="r1" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
                     <spine>
-                        <ref-clip name="ocean_clip" offset="0s" ref="r2" duration="8000/3000s" start="15800/3000s"/>
-                        <ref-clip name="ocean_clip" offset="8000/3000s" ref="r2" duration="8200/3000s" start="5900/3000s"/>
+                        <ref-clip name="ocean_clip" offset="0" ref="r2" duration="37" start="25"/>
+                        <ref-clip name="ocean_clip" offset="37" ref="r2" duration="29" start="158"/>
+                        <ref-clip name="ocean_clip" offset="66" ref="r2" duration="14" start="257"/>
+                        <ref-clip name="ocean_clip" offset="80" ref="r2" duration="8" start="3880"/>
                     </spine>
                 </sequence>
             </project>
