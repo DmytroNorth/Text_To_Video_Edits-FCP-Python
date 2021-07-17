@@ -1,5 +1,5 @@
 00:25 Starts speaking here… Ends speaking here 01:02
- 02:38 Leave this part - repeats 3 times. Ends here 03:7
+02:38 Leave this part - repeats 3 times. Ends here 03:7
 the beginning is at 04:17 all the way up to 4:31 including the action
 this line without timecode will be discarded
 this line with a single time code 05:48 will also be discarded

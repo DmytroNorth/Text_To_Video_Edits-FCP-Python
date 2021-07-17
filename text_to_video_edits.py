@@ -13,10 +13,11 @@ fcp = open('clip.fcpxml').read()
 
 # STRING REGEX OPERATIONS
 # puting '00:' hours in where hours are missing
-pat1 = r'(\s|^)(\d{1,2}:\d{1,2})(\s)'
-repl1 = '\g<1>00:\\2\\3'
-edt1 = re.sub(pat1, repl1, edt, re.MULTILINE)
+pat1 = r'(\s|^)(\d{1,2}:\d{1,2})(\s|$)'
+repl1 = "\g<1>00:\\2\\3"
+edt1 = re.sub(pat1, repl1, edt, 0, re.MULTILINE)
 print(edt1)
+
 # pulling instanses with two timecodes in one line
 pat2 = r'.*?(\d{1,2}:\d{1,2}:\d{1,2}).*?(\d{1,2}:\d{1,2}:\d{1,2})'
 edt2 = re.findall(pat2, edt1)
