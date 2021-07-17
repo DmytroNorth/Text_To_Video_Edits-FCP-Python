@@ -1,8 +1,9 @@
+![txtvid](png/txtvid.png)
 # Text to video edits - FinalCut Pro
 
 This python file cuts a **video clip** based on **human-written instructions** inside the FinalCut Pro video editor.
 
-Please see **Jupiter notebook** `text_to_video_edits.ipynb` for detailed presentation. ![txtvid](png/txtvid.png)
+See **Jupiter notebook** `text_to_video_edits.ipynb` for detailed presentation.
 
 ## 1. Table of Contents
 
