@@ -1,4 +1,4 @@
-![txtvid](png/txtvid.png)
+![Text to video edits - FinalCut Pro](png/txtvid.png)
 
 # Text to video edits - FinalCut Pro
 
@@ -45,12 +45,11 @@ In a fast-paced TV/Film production environment **Video Editors** often receive E
 00:01:02 good shot from here... to here 00:03:35
 4:05 include this until 5:56
 ```
-
 In the case of Documentary films or long interviews, the length of the footage and hence the notes can be very long.
 
 ### 2.2 Solution
 
-Instead of manually selecting these clips in Video Editing Software or copy-pasting the timecode one timecode at a time this script automatically edits a single compound clip inside FinalCut Pro based on Editor's notes, therefore, increasing productivity, precision, and eliminating mistakes.
+Instead of **manually selecting** these clips in Video Editing Software or copy-pasting the timecode **one timecode at a time** this script **automatically edits a single compound clip** inside FinalCut Pro based on Editor's notes, therefore, increasing productivity, precision, and eliminating mistakes.
 
 ### 2.3 Motivation behind the project
 
@@ -62,15 +61,17 @@ It was originally built simply by using a stack of **regular expressions** execu
 
 ## 3. Technologies Used
 
-- **`Python 3.9.4`**
-- **`pandas`** 1.2.5 data analysis and manipulation tool
-- **`re`** regular expression operations module
+* **`Python 3.9.4`**
+* **`pandas 1.2.5`** data analysis and manipulation tool
+* **`re`** integrated regular expression operations module
+* **`os`** a portable way of using operating system dependent functionality
+
 
 ## 4. Installation
 
 1. Download **`text_to_video_edits.py`** file from this GitHub repository.
-2. Download and install [Anaconda](https://www.anaconda.com/products/individual#macos). It will contain **`pandas`** data analysis and manipulation tool.
-3. Download and install the latest version of [Python](https://www.python.org/downloads/macOS). It will include **Python Launcher.app** to easily execute python files.
+2. Install `pandas` module for Python. You can try it with **Terminal** apр through downloading and installing [Anaconda](https://www.anaconda.com/products/individual#macos). It will contain `pandas`
+3. *(Optional)* Download and install the latest version of [Python](https://www.python.org/downloads/macOS). It will include **Python Launcher.app** to easily execute python scripts.
 
 ## 5. Usage
 
@@ -79,16 +80,16 @@ It was originally built simply by using a stack of **regular expressions** execu
 #### 5.1.1 Create new project
 
 In FinalCut Pro **create a new project** and load clips into the timeline. Here I am duplicating the same clips to make the project over one hour long.
-![clips-tml](png/clips-tml.png)
+![clips on the timeline finalcut pro](png/clips-tml.png)
 
 #### 5.1.2 Create and cut compound clip
 
-Now `Select all`, choose `File -> New -> Compound Clip`, and make at least one cut of the newly created compound clip. ![cutclip](png/cutclip.png)
+Now `Select all`, choose `File -> New -> Compound Clip`, and make at least one cut of the newly created compound clip. ![finalcut pro compound clip with cuts](png/cutclip.png)
 
 #### 5.1.3 Export XML
 
 Choose `File -> Export XML`. Rename it to **`clip.fcpxml`** and save it in the same folder with `text_to_video_edits.py` file.
-![fcpxml.png](png/fcpxml.png)
+![finalcut pro exporting .fcpxml project ](png/fcpxml.png)
 
 ### 5.2 Prepare .txt file
 
@@ -120,17 +121,24 @@ Paste the text into a text editor, then save it as `videoedits.txt`, and move th
 
 ### 5.3 Launch Python script
 
-Before proceeding with the next step make sure you have [Anaconda](https://www.anaconda.com/products/individual#macos) and [Python](https://www.python.org/downloads/macOS) installed, as instructed in the [Installation](#installation) section above.
-Right-click on `text_to_video_edit.py` file and choose `Open with -> Python Launcher.app`. This will run the script and create `export.fcpxml` file in the same folder.
+Before proceeding with the next step make sure you have `pandas` ([Anaconda](https://www.anaconda.com/products/individual#macos)) installed.
 
-![pyapp](png/pyapp.png)
+Open **Terminal.app**. Type `python`, add `space`, then drag and drop `text_to_video_markers.py` and press `Return`.
+
+![run python script with terminal](png/trm2.png)
+
+Alternatively, you can install the latest version of [Python](https://www.python.org/downloads/macOS). Right-click on `text_to_video_markers.py` file and choose `Open with -> Python Launcher.app`.
+
+![open python file with python launcher](png/pyapp.png)
+
+Either method will run a python script and create `export.fcpxml` file in the same folder.
 
 ### 5.4 Open export.fcpxml with FinalCut Pro
 
 Select newly created `export.fcpxml` file and `Open with -> FinalCut Pro`. Upon opening choose the original library, then `Keep Both`. This will create the second project with the `your_original_name_1` that will include all the edits specified in `videoedits.txt`.
 
 **That's it!** We have just automatically edited a compound clip inside FinalCut Pro based on human-written text instructions.
-![fcpimp](png/fcpimp.png)
+![finalcut pro imported fcpxml](png/fcpimp.png)
 
 ## 6. Project Status
 
@@ -139,23 +147,24 @@ I am no longer working on it since I am not working for TV any longer. But if yo
 
 ## 7. Known Limitations
 
-- The script only runs with **Python 3** and **pandas** (**Anaconda**) installed.
-- **`videoedits.txt`** file must contain at least **two timecodes** in the same line.
-- The .fcpxml project must contain one or more **compound clips**.
-- The compound clip must have one or more **cuts**.
-- Input files must be named **`clip.fcpxml`** and **`videoedits.txt`**.
-- All three files (`text_to_video_edits.py`, `clip.fcpxml`, `videoedits.txt`) must be located in the **same folder**.
+* Tested on **Mac OS** only.
+* The script only runs with `pandas` module (**Anaconda**) installed.
+* Input files must be named **`clip.fcpxml`** and **`videoedits.txt`**.
+* `videoedits.txt` file must contain at least **two timecodes** in the same line.
+* The `clip.fcpxml` project must contain one or more **compound clips**.
+* The compound clip must have one or more **cuts**.
+* All three files (`text_to_video_edits.py`, `clip.fcpxml`, `videoedits.txt`) must be located in the **same folder**.
 
 ## 8. Room for Improvement
 
-- **Testing** and logging the issues.
-- Adding support for cutting a **single clip** (as opposed to a compound clip).
-- adding support for cutting **multiple** distinct compound and regular clips.
-- Making an **executable file** without the need to install `Anaconda` and `Python 3`.
-- **Developing GUI** to be able to specify .txt and .fcpx input files with any name and location.
-- Building a **web app**.
-- Designing a **report** listing the lines (with less than two timecodes) that have been **discarded**.
-- Designing **error message** when end timecode is smaller than start timecode.
+* **Testing** and logging the issues.
+* Adding support for cutting a **single clip** (as opposed to a compound clip).
+* adding support for cutting **multiple** distinct compound and regular clips.
+* Making an **executable file** without the need to install `pandas` (Anaconda).
+* **Developing GUI** to be able to specify `.txt` and `.fcpxml` input files with any name and location.
+* Building a **web app**.
+* Designing a **report** listing the lines (with less than two timecodes) that have been **discarded**.
+* Designing **error message** when end timecode is smaller than start timecode.
 
 ## 9. License
 

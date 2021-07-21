@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-
+import os
 import re
 import pandas as pd
 
-# intializing .txt file with a list of markers
-edt = open('videoedits.txt').read()
+# intializing .txt file with a list of edits
+inputtxt = 'videoedits.txt'
+txtpath = os.path.join(os.path.dirname(__file__), inputtxt)
+edt = open(txtpath).read()
 
 # intializing .fcpxml file with at least 1 marker
-fcp = open('clip.fcpxml').read()
-# print('\n'.join(re.findall(r'.*?<ref-clip.*?>', fcp)))
+inputxml = 'clip.fcpxml'
+xmlpath = os.path.join(os.path.dirname(__file__), inputxml)
+fcp = open(xmlpath).read()
 
 
 # STRING REGEX OPERATIONS
@@ -66,6 +69,6 @@ repl4 = edt3 + '\n'
 fcp2 = re.sub(pat4, repl4, fcp)
 
 # writing to a new .fcpxml file
-with open('export.fcpxml', 'w') as newfile:
+xml2 = os.path.join(os.path.dirname(__file__), 'export.fcpxml')
+with open(xml2, 'w') as newfile:
     newfile.write(fcp2)
-# print('\n'.join(re.findall(r'.*?<ref-clip.*?>', fcp2)))
